@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7953324bec1ad25ba0e38ad2c5b4c5c5",
+    "content-hash": "94a4afd01d13fdbfc551716ba886b06a",
     "packages": [
         {
             "name": "fig/http-message-util",
@@ -439,27 +439,32 @@
         },
         {
             "name": "zendframework/zend-navigation",
-            "version": "2.9.0",
+            "version": "dev-feature/expressive-support",
             "source": {
                 "type": "git",
-                "url": "https://github.com/zendframework/zend-navigation.git",
-                "reference": "a8b088f64929e172617e02d2089cc00573a61210"
+                "url": "https://github.com/froschdesign/zend-navigation.git",
+                "reference": "19ac3b24cd5fb5a6d725d397703d10fb034ee7ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-navigation/zipball/a8b088f64929e172617e02d2089cc00573a61210",
-                "reference": "a8b088f64929e172617e02d2089cc00573a61210",
+                "url": "https://api.github.com/repos/froschdesign/zend-navigation/zipball/19ac3b24cd5fb5a6d725d397703d10fb034ee7ca",
+                "reference": "19ac3b24cd5fb5a6d725d397703d10fb034ee7ca",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.6 || ^7.0",
                 "zendframework/zend-stdlib": "^2.7 || ^3.0"
             },
+            "conflict": {
+                "container-interop/container-interop": "<1.2.0"
+            },
             "require-dev": {
-                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.2",
+                "phpunit/phpunit": "^6.0.8 || ^5.7.15",
                 "zendframework/zend-coding-standard": "~1.0.0",
                 "zendframework/zend-config": "^2.6 || ^3.1",
                 "zendframework/zend-console": "^2.6",
+                "zendframework/zend-expressive-router": "^2.1.0",
+                "zendframework/zend-expressive-zendrouter": "^2.0.1",
                 "zendframework/zend-http": "^2.6",
                 "zendframework/zend-i18n": "^2.7.3",
                 "zendframework/zend-log": "^2.9.1",
@@ -472,16 +477,17 @@
             },
             "suggest": {
                 "zendframework/zend-config": "^2.6 || ^3.1, to provide page configuration (optional, as arrays and Traversables are also allowed)",
+                "zendframework/zend-expressive-router": "^2.1.0, to use router-based URI generation with Expressive pages",
                 "zendframework/zend-permissions-acl": "^2.6, to provide ACL-based access restrictions to pages",
                 "zendframework/zend-router": "^3.0, to use router-based URI generation with Mvc pages",
                 "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3, to use the navigation factories",
-                "zendframework/zend-view": "^2.8.1, to use the navigation view helpers"
+                "zendframework/zend-view": "^2.9, to use the navigation view helpers"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.9.x-dev",
-                    "dev-develop": "2.10.x-dev"
+                    "dev-master": "2.8-dev",
+                    "dev-develop": "2.9-dev"
                 },
                 "zf": {
                     "component": "Zend\\Navigation",
@@ -493,17 +499,45 @@
                     "Zend\\Navigation\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "ZendTest\\Navigation\\": "test/"
+                }
+            },
+            "scripts": {
+                "check": [
+                    "@cs-check",
+                    "@test"
+                ],
+                "cs-check": [
+                    "phpcs"
+                ],
+                "cs-fix": [
+                    "phpcbf"
+                ],
+                "test": [
+                    "phpunit --colors=always"
+                ],
+                "test-coverage": [
+                    "phpunit --colors=always --coverage-clover clover.xml"
+                ],
+                "upload-coverage": [
+                    "coveralls -v"
+                ]
+            },
             "license": [
                 "BSD-3-Clause"
             ],
-            "description": "Manage trees of pointers to web pages in order to build navigation systems",
+            "description": "provides support for managing trees of pointers to web pages",
+            "homepage": "https://github.com/zendframework/zend-navigation",
             "keywords": [
-                "ZendFramework",
                 "navigation",
-                "zf"
+                "zf2"
             ],
-            "time": "2018-04-25T20:19:50+00:00"
+            "support": {
+                "source": "https://github.com/froschdesign/zend-navigation/tree/feature/expressive-support"
+            },
+            "time": "2017-03-22T23:07:51+00:00"
         },
         {
             "name": "zendframework/zend-stdlib",
@@ -2279,7 +2313,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "zendframework/zend-navigation": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
