@@ -18,9 +18,10 @@
         "forum": "https://discourse.zendframework.com/c/questions/expressive"
     },
     "require": {
-        "php": "^7.0",
-        "http-interop/http-middleware": "0.4.1",
-        "zendframework/zend-expressive-helpers": "^4.2",
+        "php": "^7.1",
+        "http-interop/http-middleware": "^0.4.1",
+        "psr/http-server-middleware": "^1.0",
+        "zendframework/zend-expressive-helpers": "^5.0",
         "zendframework/zend-navigation": "^2.8.2",
         "zendframework/zend-stdlib": "^3.1"
     },
